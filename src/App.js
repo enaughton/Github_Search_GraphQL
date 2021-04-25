@@ -12,7 +12,7 @@ import "./index.css";
 import "./App.css";
 import "tailwindcss/tailwind.css";
 
-const REACT_APP_GITHUB_AUTH_TOKEN = process.env.REACT_APP_GITHUB_AUTH_TOKEN;
+const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
 
 const httpLink = createHttpLink({
   uri: "https://api.github.com/graphql",
@@ -22,7 +22,7 @@ const authLink = setContext((_, { headers }) => {
   return {
     headers: {
       ...headers,
-      authorization: `bearer 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`,
+      authorization: `bearer ${GITHUB_TOKEN}`,
     },
   };
 });
