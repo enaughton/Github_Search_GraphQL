@@ -10,9 +10,10 @@ import { setContext } from "@apollo/client/link/context";
 import { useState } from "react";
 import "./index.css";
 import "./App.css";
-import "tailwindcss/tailwind.css";
 
-const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
+import "tailwindcss/tailwind.css";
+const TOKEN = process.env.REACT_APP_GITHUB_TOKEN;
+console.log();
 
 const httpLink = createHttpLink({
   uri: "https://api.github.com/graphql",
@@ -22,7 +23,7 @@ const authLink = setContext((_, { headers }) => {
   return {
     headers: {
       ...headers,
-      authorization: `bearer ${GITHUB_TOKEN}`,
+      authorization: `bearer ${TOKEN}`,
     },
   };
 });
