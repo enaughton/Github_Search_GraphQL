@@ -7,7 +7,6 @@ import {
 import { setContext } from "@apollo/client/link/context";
 import { useState } from "react";
 import Cards from "./Components/Card";
-import Search from "./Components/Search";
 import "./index.css";
 import "./App.css";
 
