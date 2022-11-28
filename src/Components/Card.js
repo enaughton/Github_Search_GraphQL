@@ -5,6 +5,37 @@ import "tailwindcss/tailwind.css";
 const Card = (props) => {
   const [currentCursor, setCursor] = useState();
 
+  const QUERY = gql`
+    query SearchUsers($queryString: String!, $count: Int!, $cursor: String) {
+      search(query: $queryString, type: USER, first: $count, after: $cursor) {
+        userCount
+        edges {
+          node {
+            ... on User {
+              id
+              login
+              avatarUrl
+              name
+              url
+              followers {
+                totalCount
+              }
+              starredRepositories {
+                totalCount
+              }
+            }
+          }
+        }
+        pageInfo {
+          hasNextPage
+          hasPreviousPage
+          endCursor
+          startCursor
+        }
+      }
+    }
+  `;
+
   return (
     <div>
       <div key={user.id}>
